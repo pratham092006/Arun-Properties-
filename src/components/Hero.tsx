@@ -116,7 +116,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             {/* Main Headline */}
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1C1617] leading-[1.18] tracking-tight">
               Your Trusted Partner For <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4A0E17] via-[#BD2A2A] to-[#4A0E17]">
+              <span className="text-[#BD2A2A]">
                 Property & Legal Documentation
               </span> <br />
               In Mira Road & Thane
@@ -154,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2">
               <button
                 onClick={onOpenConsultation}
-                className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#4A0E17] via-[#BD2A2A] to-[#4A0E17] hover:from-[#BD2A2A] hover:to-[#4A0E17] text-white font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow-lg shadow-[#BD2A2A]/25 transition-all transform active:scale-98"
+                className="flex items-center justify-center gap-2 bg-[#BD2A2A] hover:bg-[#A82222] text-white font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow-lg transition-all transform active:scale-98"
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span>Book Legal Consultation</span>
@@ -170,7 +170,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                 </a>
 
                 <a
-                  href="https://wa.me/919820607688?text=Hello%20Arun%20Property%20Consultancy,%20I%20would%20like%20to%20inquire%20about..."
+                  href="https://wa.me/919820607688?text=Hello%20Arun%20Property%20Consultancy..."
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold text-xs sm:text-sm px-4 py-3 sm:px-4 sm:py-3.5 rounded-xl shadow-md transition-all active:scale-98"

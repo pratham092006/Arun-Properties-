@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Play, Pause, Volume2, VolumeX, ShieldCheck, CheckCircle2, Video, Sparkles, UserCheck } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, ShieldCheck, Video, Sparkles, UserCheck } from 'lucide-react';
 
 export const VideoShowcase: React.FC = () => {
   const [activeVideo, setActiveVideo] = useState<'handover' | 'consultant'>('handover');
@@ -54,25 +54,21 @@ export const VideoShowcase: React.FC = () => {
   };
 
   return (
-    <section id="videos" className="py-20 bg-slate-900 text-white relative overflow-hidden">
+    <section id="videos" className="py-20 bg-black text-white relative overflow-hidden border-b-4 border-black">
       
-      {/* Glow Effects */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-red-950/80 border border-red-800/60 text-red-400 text-xs font-extrabold px-3.5 py-1.5 rounded-full mb-3 uppercase tracking-wider">
-            <Video className="w-4 h-4 text-red-400" />
+          <div className="inline-flex items-center gap-2 bg-[#FF3000] text-white text-xs font-black px-3.5 py-1.5 uppercase tracking-widest mb-3">
+            <Video className="w-4 h-4 text-white" />
             <span>REAL STORIES & CONSULTATION SHOWCASE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            See How We Serve Our Clients in <span className="text-red-500">Mira Road</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tighter">
+            See How We Serve Our Clients in <span className="text-[#FF3000]">Mira Road</span>
           </h2>
-          <p className="mt-3 text-base text-slate-300">
-            From initial legal consultation to final key handover, we make property purchase and paperwork 100% transparent and stress-free.
+          <p className="mt-3 text-base text-zinc-300">
+            From initial legal consultation to final key handover, we make property purchase and paperwork 100% transparent.
           </p>
         </div>
 
@@ -81,7 +77,7 @@ export const VideoShowcase: React.FC = () => {
           
           {/* Video Player Display (8 cols) */}
           <div className="lg:col-span-8">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700 bg-black group">
+            <div className="relative border-4 border-white bg-black group">
               
               <video
                 key={currentVideo.src}
@@ -96,33 +92,33 @@ export const VideoShowcase: React.FC = () => {
 
               {/* Player Header Overlay */}
               <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
-                <span className="bg-red-600 text-white text-xs font-extrabold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
-                  <currentVideo.icon className="w-3.5 h-3.5" />
+                <span className="bg-[#FF3000] text-white text-xs font-black px-3 py-1.5 uppercase tracking-widest border border-white">
+                  <currentVideo.icon className="w-3.5 h-3.5 inline mr-1" />
                   <span>{currentVideo.badge}</span>
                 </span>
 
                 <button
                   onClick={toggleMute}
-                  className="bg-slate-900/80 hover:bg-slate-900 text-white p-2.5 rounded-full backdrop-blur-md border border-white/20 transition-all"
+                  className="bg-black text-white p-2.5 border-2 border-white transition-colors hover:bg-[#FF3000]"
                 >
-                  {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
+                  {isMuted ? <VolumeX className="w-4 h-4 text-white" /> : <Volume2 className="w-4 h-4 text-white" />}
                 </button>
               </div>
 
               {/* Center Play/Pause Trigger */}
-              <div className="absolute inset-0 flex items-center justify-center z-10 bg-slate-950/20 group-hover:bg-slate-950/40 transition-all">
+              <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/30 group-hover:bg-black/50 transition-all">
                 <button
                   onClick={togglePlay}
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600 hover:bg-red-700 text-white flex items-center justify-center shadow-2xl backdrop-blur-md transform group-hover:scale-110 transition-all"
+                  className="w-16 h-16 sm:w-20 sm:h-20 bg-[#FF3000] hover:bg-black text-white flex items-center justify-center border-2 border-white transition-all"
                 >
-                  {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
+                  {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1 fill-white" />}
                 </button>
               </div>
 
               {/* Video Info Bottom Overlay */}
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent p-6 text-white z-20">
-                <h3 className="text-xl sm:text-2xl font-bold">{currentVideo.title}</h3>
-                <p className="text-sm text-slate-300 mt-1">{currentVideo.description}</p>
+              <div className="absolute bottom-0 inset-x-0 bg-black/90 p-6 text-white z-20 border-t-2 border-white">
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-white">{currentVideo.title}</h3>
+                <p className="text-sm text-zinc-300 mt-1 font-bold">{currentVideo.description}</p>
               </div>
 
             </div>
@@ -130,7 +126,7 @@ export const VideoShowcase: React.FC = () => {
 
           {/* Video Selector Tabs & Details (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-lg font-bold text-slate-200 mb-2">Select Video Experience:</h3>
+            <h3 className="text-sm font-black uppercase tracking-widest text-zinc-300 mb-2">Select Video Experience:</h3>
             
             {videoList.map((item) => {
               const isActive = activeVideo === item.id;
@@ -139,28 +135,22 @@ export const VideoShowcase: React.FC = () => {
                 <div
                   key={item.id}
                   onClick={() => handleSelectVideo(item.id)}
-                  className={`p-5 rounded-2xl cursor-pointer transition-all border ${
+                  className={`p-5 cursor-pointer transition-all border-2 ${
                     isActive 
-                      ? 'bg-slate-800/90 border-red-500 shadow-lg ring-1 ring-red-500/50' 
-                      : 'bg-slate-800/40 border-slate-700/60 hover:bg-slate-800/70 hover:border-slate-600'
+                      ? 'bg-[#FF3000] text-white border-white' 
+                      : 'bg-black text-white border-white/40 hover:border-white'
                   }`}
                 >
                   <div className="flex items-start gap-3.5">
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                      isActive ? 'bg-red-600 text-white' : 'bg-slate-700 text-slate-300'
-                    }`}>
-                      <Icon className="w-5 h-5" />
+                    <div className="w-10 h-10 bg-white text-black font-black flex items-center justify-center shrink-0 border border-black">
+                      <Icon className="w-5 h-5 text-black" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${
-                          isActive ? 'bg-red-500/20 text-red-400' : 'bg-slate-700 text-slate-400'
-                        }`}>
-                          {item.badge}
-                        </span>
-                      </div>
-                      <h4 className="font-bold text-base text-white mt-1.5">{item.title}</h4>
-                      <p className="text-xs text-slate-400 mt-1 line-clamp-2">{item.subtitle}</p>
+                      <span className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-black text-white border border-white inline-block mb-1">
+                        {item.badge}
+                      </span>
+                      <h4 className="font-black text-base uppercase text-white leading-tight">{item.title}</h4>
+                      <p className="text-xs text-white/90 font-bold mt-1 line-clamp-2">{item.subtitle}</p>
                     </div>
                   </div>
                 </div>
@@ -168,18 +158,14 @@ export const VideoShowcase: React.FC = () => {
             })}
 
             {/* Verification Guarantee Card */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-red-950/60 to-slate-900 border border-red-900/50 text-left mt-6">
-              <div className="flex items-center gap-2 text-red-400 font-bold text-sm">
-                <ShieldCheck className="w-5 h-5 text-red-400" />
+            <div className="p-5 bg-black border-2 border-white text-left mt-6">
+              <div className="flex items-center gap-2 text-white font-black text-xs uppercase tracking-widest">
+                <ShieldCheck className="w-5 h-5 text-[#FF3000]" />
                 <span>100% Legal Paperwork Assurance</span>
               </div>
-              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+              <p className="text-xs text-zinc-300 mt-2 leading-relaxed font-bold">
                 Every deal at Arun Property Consultancy goes through rigorous chain deed verification, society NOC checks, and Maharashtra stamp duty registration.
               </p>
-              <div className="mt-3 pt-3 border-t border-red-900/40 flex items-center justify-between text-xs text-amber-400 font-semibold">
-                <span>Specialist in Stamp Duty</span>
-                <span>Mira Road East</span>
-              </div>
             </div>
 
           </div>
