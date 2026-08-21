@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #FAFAFA;
+    color: #1C1617;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+/* User Custom Brand Palette Variables */
+:root {
+  --brand-maroon: #4A0E17;
+  --brand-crimson: #BD2A2A;
+  --brand-taupe: #BCA39A;
+  --brand-taupe-light: #F7F1EE;
+  --brand-espresso: #1C1617;
+  --brand-espresso-surface: #241D1E;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F4EFEF;
+}
+::-webkit-scrollbar-thumb {
+  background: #BCA39A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BD2A2A;
+}
