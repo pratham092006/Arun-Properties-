@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ScrollMarquee } from './components/ScrollMarquee';
@@ -19,6 +19,13 @@ export function App() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [selectedPropertyTitle, setSelectedPropertyTitle] = useState<string | undefined>(undefined);
 
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   const handleOpenConsultation = (propertyTitle?: string) => {
     setSelectedPropertyTitle(propertyTitle);
     setIsConsultationOpen(true);
@@ -27,6 +34,12 @@ export function App() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-[#1C1617] flex flex-col font-sans relative">
       
+      {/* Top Motion Scroll Progress Indicator (motion.dev pattern) */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#BD2A2A] via-amber-500 to-[#BD2A2A] origin-left z-50 shadow-md"
+        style={{ scaleX }}
+      />
+
       {/* Header */}
       <Header onOpenConsultation={() => handleOpenConsultation()} />
 

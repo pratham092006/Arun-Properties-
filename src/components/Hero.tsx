@@ -9,7 +9,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  
+
   const [currentVideoIndex, setCurrentVideoIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
-        videoRef.current.play().catch(() => {});
+        videoRef.current.play().catch(() => { });
       }
       setIsPlaying(!isPlaying);
     }
@@ -82,13 +82,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
     setIsPlaying(true);
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
   };
 
   return (
     <section id="hero" className="relative pt-20 sm:pt-28 pb-10 lg:pb-16 bg-gradient-to-b from-[#F7F1EE] via-white to-[#F2EBE8] overflow-hidden">
-      
+
       {/* Background Accent Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none opacity-40">
         <div className="absolute top-8 left-4 w-60 h-60 bg-[#BD2A2A]/10 rounded-full blur-3xl"></div>
@@ -96,32 +96,32 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-          
+
           {/* LEFT COLUMN: HERO TEXT */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 space-y-4 sm:space-y-5 text-left"
           >
-            
+
             {/* Top Badges */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.5 }}
               className="flex flex-wrap items-center gap-1.5 sm:gap-2"
             >
-              <motion.span 
+              <motion.span
                 whileHover={{ scale: 1.05 }}
                 className="inline-flex items-center gap-1 bg-[#4A0E17]/10 border border-[#BD2A2A]/30 text-[#4A0E17] text-[11px] sm:text-xs font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs cursor-default"
               >
                 <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BD2A2A]" />
                 <span>ESTABLISHED SINCE 2005</span>
               </motion.span>
-              <motion.span 
+              <motion.span
                 whileHover={{ scale: 1.05 }}
                 className="inline-flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-900 text-[11px] sm:text-xs font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full cursor-default"
               >
@@ -131,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             </motion.div>
 
             {/* Main Headline */}
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
@@ -140,7 +140,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               Your Trusted Partner For <br className="hidden sm:inline" />
               <span className="text-[#BD2A2A] relative inline-block">
                 Property & Legal Documentation
-                <motion.span 
+                <motion.span
                   className="absolute bottom-0 left-0 w-full h-[3px] bg-[#BD2A2A]/30 rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -151,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
@@ -164,7 +164,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             </motion.p>
 
             {/* Bullet Points */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
@@ -189,7 +189,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             </motion.div>
 
             {/* Action Buttons */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -231,37 +231,60 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             </motion.div>
 
             {/* Stats Footer */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
               className="pt-4 border-t border-[#EAE3E0] grid grid-cols-3 text-center sm:text-left gap-2"
             >
-              <div>
-                <div className="text-base sm:text-xl font-black text-[#1C1617]">20+ Yrs</div>
+              <motion.div whileHover={{ scale: 1.05 }} className="cursor-default">
+                <motion.div
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.7 }}
+                  className="text-base sm:text-xl font-black text-[#1C1617]"
+                >
+                  20+ Yrs
+                </motion.div>
                 <div className="text-[9px] sm:text-[10px] text-[#6E5D5D] font-bold uppercase">Exp (2005)</div>
-              </div>
-              <div className="border-x border-[#EAE3E0] px-2">
-                <div className="text-base sm:text-xl font-black text-[#BD2A2A]">5.0 ★</div>
+              </motion.div>
+
+              <motion.div whileHover={{ scale: 1.05 }} className="border-x border-[#EAE3E0] px-2 cursor-default">
+                <motion.div
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.8 }}
+                  className="text-base sm:text-xl font-black text-[#BD2A2A]"
+                >
+                  5.0 ★
+                </motion.div>
                 <div className="text-[9px] sm:text-[10px] text-[#6E5D5D] font-bold uppercase">44 Reviews</div>
-              </div>
-              <div>
-                <div className="text-base sm:text-xl font-black text-[#1C1617]">Mira Rd</div>
+              </motion.div>
+
+              <motion.div whileHover={{ scale: 1.05 }} className="cursor-default">
+                <motion.div
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.9 }}
+                  className="text-base sm:text-xl font-black text-[#1C1617]"
+                >
+                  Mira Rd
+                </motion.div>
                 <div className="text-[9px] sm:text-[10px] text-[#6E5D5D] font-bold uppercase">Sheetal Nagar</div>
-              </div>
+              </motion.div>
             </motion.div>
 
           </motion.div>
 
           {/* RIGHT COLUMN: LANDSCAPE VIDEO PLAYER */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.7 }}
             className="lg:col-span-6"
           >
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white bg-[#1C1617] group ring-1 ring-[#BD2A2A]/40">
-              
+
               <div className="relative aspect-video w-full overflow-hidden">
                 <video
                   key={currentVideo.src}
@@ -285,12 +308,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                   </button>
                 </div>
 
-                <div 
-                  className={`absolute inset-0 flex items-center justify-center z-10 bg-[#1C1617]/30 transition-opacity duration-300 ${
-                    isPlaying && !hasEnded 
-                      ? 'opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto' 
+                <div
+                  className={`absolute inset-0 flex items-center justify-center z-10 bg-[#1C1617]/30 transition-opacity duration-300 ${isPlaying && !hasEnded
+                      ? 'opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto'
                       : 'opacity-100 pointer-events-auto'
-                  }`}
+                    }`}
                 >
                   {hasEnded ? (
                     <button
@@ -311,7 +333,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                 </div>
 
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#1C1617] via-[#1C1617]/85 to-transparent p-2.5 sm:p-5 text-white z-20 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2">
-                  
+
                   <div className="flex items-center gap-2">
                     <img src="/arun-logo.png" alt="Arun Logo" className="w-7 h-7 sm:w-9 sm:h-9 rounded-full border border-white/40 bg-white shrink-0" />
                     <div>
@@ -332,11 +354,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                         <button
                           key={item.id}
                           onClick={() => handleSelectChapter(idx)}
-                          className={`flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg font-bold transition-all ${
-                            isActive 
-                              ? 'bg-[#BD2A2A] text-white shadow-sm' 
+                          className={`flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg font-bold transition-all ${isActive
+                              ? 'bg-[#BD2A2A] text-white shadow-sm'
                               : 'text-[#BCA39A] hover:text-white hover:bg-[#2A2022]'
-                          }`}
+                            }`}
                         >
                           <Icon className="w-3 h-3" />
                           <span>Part {idx + 1}</span>
