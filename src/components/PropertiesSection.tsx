@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { propertyData, Property } from '../data/propertyData';
 import { Building, MapPin, Bed, Bath, ArrowUpRight, MessageCircle, Phone, CheckCircle2, SlidersHorizontal } from 'lucide-react';
 
@@ -14,11 +15,17 @@ export const PropertiesSection: React.FC<PropertiesProps> = ({ onOpenConsultatio
     : propertyData.filter(p => p.category === filter);
 
   return (
-    <section id="properties" className="py-20 bg-slate-100 relative">
+    <section id="properties" className="py-20 bg-slate-100 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header & Filters */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+        >
           <div>
             <span className="inline-flex items-center gap-1.5 bg-red-100 border border-red-200 text-red-700 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-3">
               <Building className="w-3.5 h-3.5" />
@@ -33,7 +40,7 @@ export const PropertiesSection: React.FC<PropertiesProps> = ({ onOpenConsultatio
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 bg-white p-1.5 rounded-2xl border border-slate-200 shadow-xs">
+          <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-2xl border border-slate-200 shadow-xs overflow-x-auto no-scrollbar max-w-full shrink-0">
             {[
               { id: 'all', label: 'All Listings' },
               { id: 'buy', label: 'Flats For Sale' },
@@ -41,28 +48,36 @@ export const PropertiesSection: React.FC<PropertiesProps> = ({ onOpenConsultatio
               { id: 'commercial', label: 'Shops & Commercial' },
               { id: 'rowhouse', label: 'Row Houses' }
             ].map((tab) => (
-              <button
+              <motion.button
+                whileTap={{ scale: 0.95 }}
                 key={tab.id}
                 onClick={() => setFilter(tab.id as any)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
                   filter === tab.id
                     ? 'bg-red-600 text-white shadow-md'
                     : 'text-slate-600 hover:text-red-600 hover:bg-slate-50'
                 }`}
               >
                 {tab.label}
-              </button>
+              </motion.button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Properties Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProperties.map((prop) => (
-            <div
-              key={prop.id}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-            >
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProperties.map((prop) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                whileHover={{ y: -6 }}
+                key={prop.id}
+                className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between group"
+              >
               <div>
                 {/* Image Container */}
                 <div className="relative h-60 overflow-hidden bg-slate-900">
@@ -157,9 +172,10 @@ export const PropertiesSection: React.FC<PropertiesProps> = ({ onOpenConsultatio
                 </button>
               </div>
 
-            </div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Custom Property Inquiry Banner */}
         <div className="mt-14 bg-white rounded-3xl p-8 border border-slate-200 shadow-md text-center max-w-3xl mx-auto">

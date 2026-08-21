@@ -21,21 +21,33 @@
     color: #000000;
     overflow-x: hidden;
     border-radius: 0 !important;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: touch;
+    touch-action: manipulation;
+  }
+
+  /* Hide scrollbar for clean mobile tab filters */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   /* Custom Swiss Scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
     background: #000000;
   }
   ::-webkit-scrollbar-thumb {
-    background: #FF3000;
-    border-radius: 0;
+    background: #BD2A2A;
+    border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #cc2700;
+    background: #A82222;
   }
 }
 

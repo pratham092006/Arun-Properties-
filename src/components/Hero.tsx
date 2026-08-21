@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Phone, Play, Pause, Volume2, VolumeX, ShieldCheck, CheckCircle2, Star, Award, KeyRound, UserCheck, RotateCcw } from 'lucide-react';
 import { WhatsappIcon } from './WhatsappIcon';
 
@@ -99,39 +100,76 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
           
           {/* LEFT COLUMN: HERO TEXT */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-4 sm:space-y-5 text-left"
+          >
             
             {/* Top Badges */}
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              <span className="inline-flex items-center gap-1 bg-[#4A0E17]/10 border border-[#BD2A2A]/30 text-[#4A0E17] text-[11px] sm:text-xs font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="flex flex-wrap items-center gap-1.5 sm:gap-2"
+            >
+              <motion.span 
+                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center gap-1 bg-[#4A0E17]/10 border border-[#BD2A2A]/30 text-[#4A0E17] text-[11px] sm:text-xs font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full shadow-xs cursor-default"
+              >
                 <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BD2A2A]" />
                 <span>ESTABLISHED SINCE 2005</span>
-              </span>
-              <span className="inline-flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-900 text-[11px] sm:text-xs font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
+              </motion.span>
+              <motion.span 
+                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-900 text-[11px] sm:text-xs font-extrabold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full cursor-default"
+              >
                 <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-500 text-amber-500" />
                 <span>5.0 ⭐ Google Rated (44 Reviews)</span>
-              </span>
-            </div>
+              </motion.span>
+            </motion.div>
 
             {/* Main Headline */}
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1C1617] leading-[1.18] tracking-tight">
+            <motion.h1 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1C1617] leading-[1.18] tracking-tight"
+            >
               Your Trusted Partner For <br className="hidden sm:inline" />
-              <span className="text-[#BD2A2A]">
+              <span className="text-[#BD2A2A] relative inline-block">
                 Property & Legal Documentation
+                <motion.span 
+                  className="absolute bottom-0 left-0 w-full h-[3px] bg-[#BD2A2A]/30 rounded-full"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                />
               </span> <br />
               In Mira Road & Thane
-            </h1>
+            </motion.h1>
 
             {/* Subtitle */}
-            <p className="text-xs sm:text-base text-[#4A383A] leading-relaxed">
+            <motion.p 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-xs sm:text-base text-[#4A383A] leading-relaxed"
+            >
               Contact us for sale & purchase of <strong className="text-[#1C1617]">Flats, Commercial Shops, Row Houses & Rentals</strong>. <br />
               <span className="font-extrabold text-[#BD2A2A] bg-[#F7F1EE] border border-[#EAE0DC] px-2 py-0.5 rounded inline-block mt-1">
                 SPECIALIST IN STAMP DUTY, REGISTRATION & PROPERTY DOCUMENT WORK
               </span>
-            </p>
+            </motion.p>
 
             {/* Bullet Points */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2 text-xs font-bold text-[#1C1617]">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 sm:gap-2 text-xs font-bold text-[#1C1617]"
+            >
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
                 <span>100% Legal Title Verification</span>
@@ -148,41 +186,57 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                 <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
                 <span>20+ Years Trusted Service</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2">
-              <button
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2"
+            >
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={onOpenConsultation}
-                className="flex items-center justify-center gap-2 bg-[#BD2A2A] hover:bg-[#A82222] text-white font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow-lg transition-all transform active:scale-98"
+                className="flex items-center justify-center gap-2 bg-[#BD2A2A] hover:bg-[#A82222] text-white font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow-lg transition-all"
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span>Book Legal Consultation</span>
-              </button>
+              </motion.button>
 
               <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:gap-3">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   href="tel:09820607688"
-                  className="flex items-center justify-center gap-2 bg-[#1C1617] hover:bg-[#2A2022] text-white font-extrabold text-xs sm:text-sm px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl shadow-md transition-all border border-[#3A2D30] active:scale-98"
+                  className="flex items-center justify-center gap-2 bg-[#1C1617] hover:bg-[#2A2022] text-white font-extrabold text-xs sm:text-sm px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl shadow-md transition-all border border-[#3A2D30]"
                 >
                   <Phone className="w-4 h-4 text-[#BD2A2A]" />
                   <span>Call Us</span>
-                </a>
+                </motion.a>
 
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   href="https://wa.me/919820607688?text=Hello%20Arun%20Property%20Consultancy..."
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold text-xs sm:text-sm px-4 py-3 sm:px-4 sm:py-3.5 rounded-xl shadow-md transition-all active:scale-98"
+                  className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold text-xs sm:text-sm px-4 py-3 sm:px-4 sm:py-3.5 rounded-xl shadow-md transition-all"
                 >
                   <WhatsappIcon className="w-4 h-4 fill-white" />
                   <span>WhatsApp</span>
-                </a>
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
 
             {/* Stats Footer */}
-            <div className="pt-4 border-t border-[#EAE3E0] grid grid-cols-3 text-center sm:text-left gap-2">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="pt-4 border-t border-[#EAE3E0] grid grid-cols-3 text-center sm:text-left gap-2"
+            >
               <div>
                 <div className="text-base sm:text-xl font-black text-[#1C1617]">20+ Yrs</div>
                 <div className="text-[9px] sm:text-[10px] text-[#6E5D5D] font-bold uppercase">Exp (2005)</div>
@@ -195,12 +249,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                 <div className="text-base sm:text-xl font-black text-[#1C1617]">Mira Rd</div>
                 <div className="text-[9px] sm:text-[10px] text-[#6E5D5D] font-bold uppercase">Sheetal Nagar</div>
               </div>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
           {/* RIGHT COLUMN: LANDSCAPE VIDEO PLAYER */}
-          <div className="lg:col-span-6">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="lg:col-span-6"
+          >
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white bg-[#1C1617] group ring-1 ring-[#BD2A2A]/40">
               
               <div className="relative aspect-video w-full overflow-hidden">
@@ -300,7 +359,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               <span>Arun Property Consultancy</span>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
 

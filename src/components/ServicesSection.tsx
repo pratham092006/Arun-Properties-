@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { 
   FileText, 
   Home, 
@@ -92,38 +93,55 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
   ];
 
   return (
-    <section id="services" className="py-20 sm:py-28 bg-[#F2F2F2] text-black swiss-dots border-b-4 border-black">
+    <section id="services" className="py-20 sm:py-28 bg-[#F2F2F2] text-black swiss-dots border-b-4 border-black relative overflow-hidden">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Numbered Prefix */}
-        <div className="flex items-center justify-center gap-3 mb-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center justify-center gap-3 mb-4"
+        >
           <span className="bg-[#FF3000] text-white font-black text-xs px-2.5 py-1 tracking-widest uppercase">
             02. PRACTICE AREAS
           </span>
           <span className="font-bold text-xs uppercase tracking-widest text-black">
             LEGAL & REAL ESTATE SERVICES
           </span>
-        </div>
+        </motion.div>
 
         {/* Section Headline */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
           <h2 className="font-black text-4xl sm:text-6xl uppercase tracking-tighter text-black">
             SERVICES & <span className="text-[#FF3000]">DOCUMENTATION</span>
           </h2>
           <p className="mt-2 font-bold text-xs uppercase tracking-wider text-black">
             COMPLETE TITLE CLEARANCE, E-STAMPING & PROPERTY BROKERAGE IN MIRA ROAD.
           </p>
-        </div>
+        </motion.div>
 
         {/* 6 Rectangular Swiss Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => {
+          {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div
+              <motion.div
                 key={service.id}
-                className="bg-white border-2 border-black border-t-4 border-t-[#FF3000] p-6 flex flex-col justify-between group hover:bg-black hover:text-white transition-colors duration-150"
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className="bg-white border-2 border-black border-t-4 border-t-[#FF3000] p-6 flex flex-col justify-between group hover:bg-black hover:text-white transition-colors duration-150 shadow-md hover:shadow-2xl"
               >
                 <div>
                   <div className="flex justify-between items-start mb-4">
@@ -153,15 +171,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsulta
                   </ul>
                 </div>
 
-                <button
+                <motion.button
+                  whileTap={{ scale: 0.96 }}
                   onClick={() => onOpenConsultation(service.title)}
                   className="w-full btn-swiss-secondary text-xs py-3 flex items-center justify-center gap-2 group-hover:bg-[#FF3000] group-hover:text-white group-hover:border-[#FF3000]"
                 >
                   <span>INQUIRE NOW</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </motion.button>
 
-              </div>
+              </motion.div>
             );
           })}
         </div>
